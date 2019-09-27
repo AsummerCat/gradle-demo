@@ -1,0 +1,4 @@
+rootProject.name = 'gradle-demo'
+include 'entiry'
+include 'web'
+

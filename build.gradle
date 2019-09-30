@@ -1,17 +1,23 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'           //spring提供的spring boot插件,主要用到了其依赖管理的功能.
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
 
-group 'com.linjingc'
-version '1.0-SNAPSHOT'
+
 
 
 allprojects {
-
+    group 'com.linjingc'
+    version '1.0-SNAPSHOT'
     apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'                        //spring boot插件
+    apply plugin: 'io.spring.dependency-management'                 //实现maven的依赖统一管理功能
 
-    sourceCompatibility = 1.8
+    sourceCompatibility = '1.8'
+    targetCompatibility  = '1.8'
 
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-    }
+    tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
 
     // java编译的时候缺省状态下会因为中文字符而失败
     [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
@@ -26,6 +32,7 @@ allprojects {
     repositories {
         mavenCentral()
     }
+    
 }
 
 // 所有子项目的通用配置
